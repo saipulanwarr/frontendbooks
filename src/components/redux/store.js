@@ -15,6 +15,7 @@ const persisConfig = {
 };
 
 const pReducer = persistReducer(persisConfig, reducers);
+const devTools = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : null
 
 const store = createStore(
     pReducer,
@@ -23,7 +24,7 @@ const store = createStore(
             logger,
             promiseMiddleware
         ),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        window.REDUX_DEVTOOLS_EXTENSION ? window.REDUX_DEVTOOLS_EXTENSION() : f => f
     )
 )
 

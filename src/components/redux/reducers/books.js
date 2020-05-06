@@ -22,7 +22,7 @@ const books = (state = initialState, action) => {
             return{
                 ...state,
                 isLoading: false,
-                books: action.payload.data
+                books: action.payload.data.result
             }
 
         case 'CREATE_BOOK_PENDING':
